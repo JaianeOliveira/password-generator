@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="style.css" />
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: ['Roboto Mono', 'sans-serif'],
+						},
+					},
+				},
+			};
+		</script>
+
+		<script src="https://unpkg.com/phosphor-icons"></script>
+		<script src="./index.js" defer></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<title>Polaris</title>
+	</head>
+	<body
+		class="bg-zinc-900 text-zinc-100 flex items-center justify-center flex-col h-[100vh] w-full"
+	>
+		<main class="gap-4 flex flex-col items-center md:w-[500px] w-[80vw]">
+			<h1 class="text-lg font-semibold text-zinc-300">Password generator</h1>
+
+			<div
+				class="bg-zinc-800 w-full flex gap-4 justify-between items-center p-4"
+			>
+				<input
+					type="text"
+					id="result"
+					name="result"
+					placeholder="P4$5WOrD !"
+					disabled
+					class="bg-transparent outline-none placeholder:text-zinc-400 max-w-[80%] text-sm"
+				/>
+				<button class="w-fit" id="copy-button" disabled>
+					<i
+						id="copy-icon"
+						class="ph-copy-bold text-emerald-500 font-bold text-lg transition-all"
+					></i>
+				</button>
+			</div>
+
+			<div class="bg-zinc-800 w-full p-4">
+				<form class="flex flex-col gap-6">
+					<div class="flex flex-col gap-4">
+						<div class="flex items-center justify-between w-full">
+							<label class="text-sm" for="length">Character Length</label>
+							<span class="text-emerald-400" id="display-length">5</span>
+						</div>
+
+						<input
+							type="range"
+							name="length"
+							id="input-length"
+							class="length-range"
+							min="1"
+							max="50"
+							step="1"
+							value="5"
+						/>
+					</div>
+					<fieldset>
+						<div class="checkbox-wrapper">
+							<button class="checkbox checkbox-checked" id="include-uppercase">
+								<i class="ph-check-bold"></i>
+							</button>
+							<label class="text-sm" for="include-uppercase"
+								>Include Uppercase Letters</label
+							>
+						</div>
+						<div class="checkbox-wrapper">
+							<button class="checkbox checkbox-checked" id="include-lowercase">
+								<i class="ph-check-bold"></i>
+							</button>
+							<label class="text-sm" for="include-lowercase"
+								>Include Lowercase Letters</label
+							>
+						</div>
+						<div class="checkbox-wrapper">
+							<button class="checkbox" id="include-numbers"></button>
+							<label class="text-sm" for="include-numbers"
+								>Include Numbers</label
+							>
+						</div>
+						<div class="checkbox-wrapper">
+							<button class="checkbox" id="include-symbols"></button>
+							<label class="text-sm" for="include-symbols"
+								>Include Symbols</label
+							>
+						</div>
+					</fieldset>
+					<div class="bg-zinc-900 flex items-center justify-between p-3">
+						<label for="stretch" class="uppercase text-sm text-zinc-300"
+							>Stretch</label
+						>
+						<div class="stretch-selector">
+							<button class="stretch-item stretch-item-selected"></button>
+							<button class="stretch-item"></button>
+							<button class="stretch-item"></button>
+							<button class="stretch-item"></button>
+						</div>
+					</div>
+					<button
+						id="generate-button"
+						type="submit"
+						class="bg-emerald-500 text-zinc-900 font-bold w-full p-3 flex items-center justify-center gap-2 font-base"
+					>
+						<span>Generate</span> <i class="ph-arrow-right-bold"></i>
+					</button>
+				</form>
+			</div>
+		</main>
+	</body>
+</html>
