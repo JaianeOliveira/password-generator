@@ -82,6 +82,7 @@
 	background: #18181b;
 	border: none;
 	outline: none;
+	border-radius: 16px;
 }
 
 .length-range::-webkit-slider-thumb {
