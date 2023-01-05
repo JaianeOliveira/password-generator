@@ -93,8 +93,8 @@ const characters = {
 };
 
 // Variables
-let passwordLength = 5;
-let passwordStretch = 1;
+let passwordLength = 10;
+let stretchLevel = 0;
 
 // Elements
 const stretch_items = document.querySelectorAll('.stretch-item');
@@ -116,12 +116,6 @@ const generatePassword = () => {
 			include.push(checkbox.getAttribute('id').split('-')[1]);
 	});
 
-	console.log({
-		size: passwordLength,
-		stretch: passwordStretch,
-		rules: include,
-	});
-
 	const validCharacteres = Object.entries(characters)
 		.map(([key, value]) => {
 			if (include.includes(key)) return value;
@@ -137,6 +131,25 @@ const generatePassword = () => {
 	}
 
 	return generatedPassword.join('');
+};
+
+const calcStretchLevel = () => {
+	let checks = 0;
+	checkboxes.forEach((checkbox) => {
+		if (checkbox.classList.contains('checkbox-checked')) {
+			checks += 1;
+		}
+	});
+
+	stretch_items.forEach((item) => {
+		item.classList.remove('stretch-item-checked');
+	});
+
+	stretch_items.forEach((item, index) => {
+		if (index <= checks - 1) {
+			item.classList.add('stretch-item-checked');
+		}
+	});
 };
 
 // Listeners
@@ -156,19 +169,8 @@ document.querySelectorAll('.checkbox').forEach((checkbox) => {
 					'beforeend',
 					'<i class="ph-check-bold"></i>'
 			  );
-	});
-});
 
-stretch_items.forEach((item, index, items) => {
-	item.addEventListener('click', (e) => {
-		e.preventDefault();
-		passwordStretch = index + 1;
-
-		for (let i = items.length - 1; i >= 0; i--) {
-			i <= index
-				? stretch_items[i].classList.add('stretch-item-selected')
-				: stretch_items[i].classList.remove('stretch-item-selected');
-		}
+		calcStretchLevel();
 	});
 });
 

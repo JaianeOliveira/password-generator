@@ -1,6 +1,6 @@
 /* Stretch level selector */
 
-.stretch-selector {
+.stretch-indicator {
 	display: flex;
 	gap: 8px;
 }
@@ -13,7 +13,7 @@
 	border: 1px solid #fff;
 }
 
-.stretch-item-selected {
+.stretch-item-checked {
 	border: 1px solid #34d399;
 	background: #34d399;
 }
